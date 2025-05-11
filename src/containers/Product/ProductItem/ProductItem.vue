@@ -1,16 +1,19 @@
 <script setup>
-import ProductInfo from "./data";
-
-const { dataItem1, dataItem2, dataItem3, dataItem4 } = ProductInfo;
+defineProps({
+  product: {
+    type: Object,
+    required: true,
+  },
+});
 </script>
 
 <template>
   <div class="col-md-4">
     <div class="card">
-      <img src="{dataItem1}" class="card-img-top" alt="{dataItem2}" />
+      <img :src="product.src" class="card-img-top" :alt="product.alt" />
       <div class="card-body">
-        <h5 class="card-title">"{dataItem3}"</h5>
-        <p class="card-text">"{dataItem4}"</p>
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.description }}</p>
         <button class="primary">Thêm giỏ hàng</button><br />
         <button class="danger">Mua ngay</button>
       </div>
